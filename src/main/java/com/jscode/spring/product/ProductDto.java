@@ -1,4 +1,4 @@
-package com.jscode.spring.Product;
+package com.jscode.spring.product;
 
 import lombok.Getter;
 
