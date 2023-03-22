@@ -23,7 +23,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ProductEntityDto save(@RequestBody ProductEntityDto productEntityDto){
+    public Long save(@RequestBody ProductEntityDto productEntityDto){
         return productService.save(productEntityDto);
     }
 

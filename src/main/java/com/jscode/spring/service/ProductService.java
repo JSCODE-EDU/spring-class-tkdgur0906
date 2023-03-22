@@ -25,13 +25,15 @@ public class ProductService {
      * ProductJpaRepository
      */
 
-    public ProductEntityDto save(ProductEntityDto productEntityDto){
-        return productJpaRepository.save(productEntityDto.toEntity()).toDto();
+    public Long save(ProductEntityDto productEntityDto){
+        return productJpaRepository.save(productEntityDto.toEntity()).getId();
     }
 
     public ProductEntityDto findById(Long id){
         return productJpaRepository.findById(id).get().toDto();
     }
+
+    public ProductEntityDto
 
     /**
      * ProductRepository
