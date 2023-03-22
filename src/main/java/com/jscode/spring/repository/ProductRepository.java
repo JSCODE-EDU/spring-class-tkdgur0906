@@ -1,5 +1,6 @@
-package com.jscode.spring.product;
+package com.jscode.spring.repository;
 
+import com.jscode.spring.domain.Product;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

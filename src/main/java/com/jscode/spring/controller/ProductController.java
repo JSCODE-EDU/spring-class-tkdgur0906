@@ -1,5 +1,7 @@
-package com.jscode.spring.product;
+package com.jscode.spring.controller;
 
+import com.jscode.spring.dto.ProductDto;
+import com.jscode.spring.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

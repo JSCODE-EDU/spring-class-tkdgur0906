@@ -1,4 +1,4 @@
-package com.jscode.spring.product;
+package com.jscode.spring.dto;
 
 import lombok.Getter;
 

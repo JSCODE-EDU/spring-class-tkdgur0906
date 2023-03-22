@@ -1,5 +1,8 @@
-package com.jscode.spring.product;
+package com.jscode.spring.service;
 
+import com.jscode.spring.domain.Product;
+import com.jscode.spring.dto.ProductDto;
+import com.jscode.spring.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

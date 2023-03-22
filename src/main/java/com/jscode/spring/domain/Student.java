@@ -1,4 +1,4 @@
-package com.jscode.spring.entity;
+package com.jscode.spring.domain;
 
 
 import org.hibernate.annotations.ColumnDefault;
