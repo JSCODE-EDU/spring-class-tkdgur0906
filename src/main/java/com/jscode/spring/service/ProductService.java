@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,15 +26,32 @@ public class ProductService {
      * ProductJpaRepository
      */
 
-    public Long save(ProductEntityDto productEntityDto){
+    public Long save(ProductEntityDto productEntityDto) {
+        List<ProductEntity> findProducts = productJpaRepository.findAllByName(productEntityDto.getName());
         return productJpaRepository.save(productEntityDto.toEntity()).getId();
     }
 
-    public ProductEntityDto findById(Long id){
+    public ProductEntityDto findById(Long id) {
         return productJpaRepository.findById(id).get().toDto();
     }
 
-    public ProductEntityDto
+    public ProductEntityDto findByName(String name) {
+        return productJpaRepository.findByName(name).toDto();
+    }
+
+    public List<ProductEntityDto> findAllByPrice(Long price){
+        return productJpaRepository.findAllByPriceOrderByNameDesc(price).stream()
+                .map(ProductEntity::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProductEntityDto> findAllByNameAndPrice(String name, Long price){
+        return productJpaRepository.findAllByNameAndPrice(name,price)
+                .stream()
+                .map(ProductEntity::toDto)
+                .collect(Collectors.toList());
+    }
+
 
     /**
      * ProductRepository

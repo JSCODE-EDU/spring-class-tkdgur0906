@@ -7,19 +7,23 @@ import lombok.Getter;
 @Getter
 public class ProductEntityDto {
 
+    private Long id;
+
     private String name;
 
     private Long price;
 
-    public ProductEntity toEntity(){
+    public ProductEntity toEntity() {
         return ProductEntity.builder()
+                .id(id)
                 .name(name)
                 .price(price)
                 .build();
     }
 
     @Builder
-    public ProductEntityDto(String name, Long price){
+    public ProductEntityDto(Long id, String name, Long price) {
+        this.id = id;
         this.name = name;
         this.price = price;
     }

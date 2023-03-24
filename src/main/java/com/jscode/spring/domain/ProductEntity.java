@@ -21,8 +21,9 @@ public class ProductEntity {
     protected ProductEntity() {
     }
 
-    public ProductEntityDto toDto(){
+    public ProductEntityDto toDto() {
         return ProductEntityDto.builder()
+                .id(id)
                 .name(name)
                 .price(price)
                 .build();
@@ -30,7 +31,7 @@ public class ProductEntity {
     }
 
     @Builder
-    public ProductEntity(Long id, String name, Long price){
+    public ProductEntity(Long id, String name, Long price) {
         this.id = id;
         this.name = name;
         this.price = price;

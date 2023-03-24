@@ -1,10 +1,12 @@
 package com.jscode.spring.controller;
 
-import com.jscode.spring.dto.ProductDto;
 import com.jscode.spring.dto.ProductEntityDto;
+import com.jscode.spring.exception.custom.NoParamException;
 import com.jscode.spring.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,15 +19,33 @@ public class ProductController {
     /**
      * ProductJpaRepository 사용
      */
-    @GetMapping
-    public ProductEntityDto findOneById(@RequestParam Long id){
+    @GetMapping(params = "id")
+    public ProductEntityDto findById(@RequestParam Long id) {
         return productService.findById(id);
     }
 
+    @GetMapping(params = "name")
+    public ProductEntityDto findByName(@RequestParam String name) {
+        return productService.findByName(name);
+    }
+
+    @GetMapping(params = "price")
+    public List<ProductEntityDto> findAllByPrice(@RequestParam Long price) {
+        return productService.findAllByPrice(price);
+    }
+
+    @GetMapping(params = {"name", "price"})
+    public List<ProductEntityDto> findAllByNameAndPrice(@RequestParam String name,
+                                                        @RequestParam Long price) {
+        return productService.findAllByNameAndPrice(name, price);
+    }
+
+
     @PostMapping
-    public Long save(@RequestBody ProductEntityDto productEntityDto){
+    public Long save(@RequestBody ProductEntityDto productEntityDto) {
         return productService.save(productEntityDto);
     }
+
 
     /**
      * ProductRepository 사용
