@@ -4,6 +4,7 @@ package com.jscode.spring.repository;
 import com.jscode.spring.domain.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -30,4 +31,7 @@ public interface ProductJpaRepository extends JpaRepository<ProductEntity, Long>
 
     @Query("select avg(p.price) from ProductEntity p")
     public double findAvgPrice();
+
+    @Query("select s.products from Store s where s.id = :storeId")
+    public List<ProductEntity> findAllProductInStore(@Param("storeId") Long storeId);
 }

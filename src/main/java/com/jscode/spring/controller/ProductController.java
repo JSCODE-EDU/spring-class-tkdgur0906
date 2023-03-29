@@ -1,6 +1,8 @@
 package com.jscode.spring.controller;
 
 import com.jscode.spring.dto.ProductEntityDto;
+import com.jscode.spring.dto.Result;
+import com.jscode.spring.dto.StoreInfoResponse;
 import com.jscode.spring.exception.custom.NoParamException;
 import com.jscode.spring.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +48,10 @@ public class ProductController {
         return productService.save(productEntityDto);
     }
 
+    @GetMapping(params = "store")
+    public Result<StoreInfoResponse> productsInStoreGet(@RequestParam("store") Long storeId) {
+        return new Result(productService.findProductsInStore(storeId));
+    }
 
     /**
      * ProductRepository 사용

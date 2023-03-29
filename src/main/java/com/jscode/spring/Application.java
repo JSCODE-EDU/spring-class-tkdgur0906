@@ -1,5 +1,7 @@
 package com.jscode.spring;
 
+import com.jscode.spring.repository.StoreRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

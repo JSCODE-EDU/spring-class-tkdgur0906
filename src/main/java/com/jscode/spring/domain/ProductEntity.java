@@ -18,7 +18,15 @@ public class ProductEntity {
 
     private Long price;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Store store;
+
     protected ProductEntity() {
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
     }
 
     public ProductEntityDto toDto() {

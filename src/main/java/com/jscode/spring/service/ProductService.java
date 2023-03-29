@@ -39,19 +39,26 @@ public class ProductService {
         return productJpaRepository.findByName(name).toDto();
     }
 
-    public List<ProductEntityDto> findAllByPrice(Long price){
+    public List<ProductEntityDto> findAllByPrice(Long price) {
         return productJpaRepository.findAllByPriceOrderByNameDesc(price).stream()
                 .map(ProductEntity::toDto)
                 .collect(Collectors.toList());
     }
 
-    public List<ProductEntityDto> findAllByNameAndPrice(String name, Long price){
-        return productJpaRepository.findAllByNameAndPrice(name,price)
+    public List<ProductEntityDto> findAllByNameAndPrice(String name, Long price) {
+        return productJpaRepository.findAllByNameAndPrice(name, price)
                 .stream()
                 .map(ProductEntity::toDto)
                 .collect(Collectors.toList());
     }
 
+    public List<ProductEntityDto> findProductsInStore(Long storeId) {
+        return productJpaRepository.findAllProductInStore(storeId)
+                .stream()
+                .map(ProductEntity::toDto)
+                .collect(Collectors.toList());
+
+    }
 
     /**
      * ProductRepository
